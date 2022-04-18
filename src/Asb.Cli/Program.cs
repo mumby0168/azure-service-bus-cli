@@ -4,10 +4,9 @@ using Asb.Cli.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-var builder = CoconaApp.CreateBuilder(args, options =>
-{
-    options.EnableShellCompletionSupport = true;
-});
+var builder = CoconaApp.CreateBuilder(
+    args,
+    options => { options.EnableShellCompletionSupport = true; });
 
 builder.Configuration.AddJsonFile("appsettings.json", false);
 
@@ -21,17 +20,15 @@ builder.Services
 
 var app = builder.Build();
 
-
 app.AddSubCommand("topic", commandsBuilder =>
 {
     commandsBuilder
         .AddCommand("peek", CliCommands.PeekTopicAsync)
         .WithAliases("p");
-    
+
     commandsBuilder
         .AddCommand("read", CliCommands.ReadTopicAsync)
         .WithAliases("r");
-    
 }).WithAliases("t");
 
 app.AddSubCommand("queue", commandsBuilder =>
@@ -43,14 +40,12 @@ app.AddSubCommand("queue", commandsBuilder =>
     commandsBuilder
         .AddCommand("read", CliCommands.ReadQueueAsync)
         .WithAliases("r");
-    
 }).WithAliases("q");
 
 app.AddSubCommand("config", commandsBuilder =>
 {
     commandsBuilder.AddCommand("save", CliCommands.SaveConnectionStringAsync);
     commandsBuilder.AddCommand("list", CliCommands.ListConfig);
-    
 }).WithAliases("c");
 
 app.Run();
