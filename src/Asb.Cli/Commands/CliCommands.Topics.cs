@@ -6,11 +6,17 @@ namespace Asb.Cli.Commands;
 public static partial class CliCommands
 {
     public static async Task PeekTopicAsync(
+        [Option(new[] {'i'}, Description = HelpDescriptions.Instance)]
         string instance,
+        [Option(new[] {'t'}, Description = HelpDescriptions.Topic)]
         string topic,
+        [Option(new[] {'s'}, Description = HelpDescriptions.Subscription)]
         string subscription,
+        [Option(Description = HelpDescriptions.DeadLetterQueue)]
         bool dlq,
+        [Option(Description = HelpDescriptions.Max)]
         int? max,
+        [Option(Description = HelpDescriptions.File)]
         string? file,
         IConfigService configService)
     {
@@ -39,13 +45,22 @@ public static partial class CliCommands
         await ProcessMessagesAsync(rawMessages, file, configService);
     }
 
-    public static async Task ReadTopicAsync(string instance,
+    public static async Task ReadTopicAsync(
+        [Option(new[] {'i'}, Description = HelpDescriptions.Instance)]
+        string instance,
+        [Option(new[] {'t'}, Description = HelpDescriptions.Topic)]
         string topic,
+        [Option(new[] {'s'}, Description = HelpDescriptions.Subscription)]
         string subscription,
+        [Option(Description = HelpDescriptions.DeadLetterQueue)]
         bool dlq,
+        [Option(Description = HelpDescriptions.Max)]
         int? max,
+        [Option(Description = HelpDescriptions.File)]
         string? file,
+        [Option(Description = HelpDescriptions.Timeout)]
         int? timeout,
+        [Option(Description = HelpDescriptions.Clear)]
         bool clear,
         IConfigService configService)
     {

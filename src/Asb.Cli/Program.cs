@@ -4,7 +4,10 @@ using Asb.Cli.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-var builder = CoconaApp.CreateBuilder();
+var builder = CoconaApp.CreateBuilder(args, options =>
+{
+    options.EnableShellCompletionSupport = true;
+});
 
 builder.Configuration.AddJsonFile("appsettings.json", false);
 
@@ -17,6 +20,7 @@ builder.Services
     .AddSingleton<IConfigService, DefaultConfigService>();
 
 var app = builder.Build();
+
 
 app.AddSubCommand("topic", commandsBuilder =>
 {
@@ -33,11 +37,11 @@ app.AddSubCommand("topic", commandsBuilder =>
 app.AddSubCommand("queue", commandsBuilder =>
 {
     commandsBuilder
-        .AddCommand("peek", CliCommands.PeekTopicAsync)
+        .AddCommand("peek", CliCommands.PeekQueueAsync)
         .WithAliases("p");
 
     commandsBuilder
-        .AddCommand("read", CliCommands.ReadTopicAsync)
+        .AddCommand("read", CliCommands.ReadQueueAsync)
         .WithAliases("r");
     
 }).WithAliases("q");

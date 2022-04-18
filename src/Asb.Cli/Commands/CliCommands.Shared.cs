@@ -38,4 +38,26 @@ public static partial class CliCommands
             }
         }
     }
+
+    private static class HelpDescriptions
+    {
+        public const string Instance = "The key used to get the azure service bus connection string.";
+
+        public const string Queue = "The queue in which to use in this operation ('~' will be replaced with `/`).";
+
+        public const string DeadLetterQueue = "Whether or not to use the dead letter queue in this operation.";
+
+        public const string Max = "The maximum amount of messages used in this operation";
+        
+        public const string File = "The relative file path to write the messages used in this operation.";
+        
+        public const string Timeout = "The time in seconds in which this operation will run before being cancelled.";
+        
+        public const string Clear = "Whether or not the message entity is being cleared down.";
+        
+        public const string Topic = "The topic to be used in this operation ('~' will be replaced with `/`).";
+        
+        public const string Subscription = "The subscription name to use in this operation.";
+
+    }
 }

@@ -3,13 +3,18 @@ using Azure.Messaging.ServiceBus;
 
 namespace Asb.Cli.Commands;
 
-public static partial class CliCommands 
+public static partial class CliCommands
 {
     public static async Task PeekQueueAsync(
+        [Option(new[] {'i'}, Description = HelpDescriptions.Instance)]
         string instance,
+        [Option(new[] {'q'}, Description = HelpDescriptions.Queue)]
         string queue,
+        [Option(Description = HelpDescriptions.DeadLetterQueue)]
         bool dlq,
+        [Option(Description = HelpDescriptions.Max)]
         int? max,
+        [Option(Description = HelpDescriptions.File)]
         string? file,
         IConfigService configService)
     {
@@ -38,12 +43,20 @@ public static partial class CliCommands
         await ProcessMessagesAsync(rawMessages, file, configService);
     }
 
-    public static async Task ReadQueueAsync(string instance,
+    public static async Task ReadQueueAsync(
+        [Option(new[] {'i'}, Description = HelpDescriptions.Instance)]
+        string instance,
+        [Option(new[] {'q'}, Description = HelpDescriptions.Queue)]
         string queue,
+        [Option(Description = HelpDescriptions.DeadLetterQueue)]
         bool dlq,
+        [Option(Description = HelpDescriptions.Max)]
         int? max,
+        [Option(Description = HelpDescriptions.File)]
         string? file,
+        [Option(Description = HelpDescriptions.Timeout)]
         int? timeout,
+        [Option(Description = HelpDescriptions.Clear)]
         bool clear,
         IConfigService configService)
     {
