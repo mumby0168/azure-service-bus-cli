@@ -5,6 +5,22 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>asb</ToolCommandName>
+    <Authors>Billy Mumby</Authors>
+    <Copyright>Copyright 2021 (c) Billy Mumby. All rights reserved.</Copyright>
+
+    <Description>dotnet tool to help manage queues and topics on azure service bus.</Description>
+
+    <!-- NuGet settings -->
+    <PackageId>Mumby0168.AzureServiceBusCli</PackageId>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>Tool;Dotnet;Cli;Console;Azure;ServiceBus;</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/mumby0168/azure-service-bus-cli</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/mumby0168/azure-service-bus-clir</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
