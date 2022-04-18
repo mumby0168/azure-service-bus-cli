@@ -18,7 +18,6 @@
     <PackageTags>Tool;Dotnet;Cli;Console;Azure;ServiceBus;</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/mumby0168/azure-service-bus-cli</PackageProjectUrl>
-    <PackageIcon>icon.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/mumby0168/azure-service-bus-clir</RepositoryUrl>
   </PropertyGroup>
