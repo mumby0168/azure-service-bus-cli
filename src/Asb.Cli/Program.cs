@@ -36,7 +36,7 @@ app.AddSubCommand("topic", commandsBuilder =>
 
     commandsBuilder
         .AddCommand("retry", CliCommands.ReadTopicAsync)
-        .WithAliases("r");
+        .WithAliases("rt");
 }).WithAliases("t");
 
 app.AddSubCommand("queue", commandsBuilder =>
