@@ -8,7 +8,11 @@ var builder = CoconaApp.CreateBuilder(
     args,
     options => { options.EnableShellCompletionSupport = true; });
 
-builder.Configuration.AddJsonFile("appsettings.json", false);
+builder.Configuration.AddJsonFile(
+    Path.Combine(
+        DefaultConfigService.ConfigDirectory,
+        "appsettings.json"),
+    false);
 
 builder.Services
     .AddOptions<CliOptions>()
@@ -28,6 +32,10 @@ app.AddSubCommand("topic", commandsBuilder =>
 
     commandsBuilder
         .AddCommand("read", CliCommands.ReadTopicAsync)
+        .WithAliases("r");
+
+    commandsBuilder
+        .AddCommand("retry", CliCommands.ReadTopicAsync)
         .WithAliases("r");
 }).WithAliases("t");
 

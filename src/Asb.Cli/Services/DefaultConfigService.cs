@@ -7,7 +7,7 @@ namespace Asb.Cli.Services;
 
 public class DefaultConfigService : IConfigService
 {
-    private readonly string _configDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
+    public static readonly string ConfigDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
     private readonly CliOptions _cliOptions;
 
     public DefaultConfigService(IOptions<CliOptions> optionsMonitor) =>
@@ -35,7 +35,7 @@ public class DefaultConfigService : IConfigService
 
         await File.WriteAllTextAsync(
             Path.Combine(
-                _configDirectory,
+                ConfigDirectory,
                 "appsettings.json"),
             json);
     }

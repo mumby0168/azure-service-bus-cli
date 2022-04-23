@@ -9,7 +9,7 @@ public static partial class CliCommands
 {
     private static async Task ProcessMessagesAsync(
         IEnumerable<ServiceBusReceivedMessage> serviceBusReceivedMessages, 
-        string? s, 
+        string? filePath, 
         IConfigService configService)
     {
         var messages = serviceBusReceivedMessages.Select(x => new AsbMessage(x)).ToList();
@@ -20,15 +20,15 @@ public static partial class CliCommands
             return;
         }
 
-        if (s is not null)
+        if (filePath is not null)
         {
-            var path = Path.Combine(Directory.GetCurrentDirectory(), s);
+            var path = Path.Combine(Directory.GetCurrentDirectory(), filePath);
 
             await File.WriteAllTextAsync(
                 path,
                 JsonSerializer.Serialize(messages, configService.SerializerOptions));
 
-            Console.WriteLine($"Written messages to file {s}");
+            Console.WriteLine($"Written messages to file {filePath}");
         }
         else
         {
